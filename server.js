@@ -33,7 +33,7 @@ db.once("open", function () {
 
 
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4850;
 
 
 
@@ -53,7 +53,7 @@ app.listen(port, function () {
 app.get("/", function (req, res) {
 	Article.find({}, null, { sort: { created: -1 } }, function (err, data) {
 		if (data.length === 0) {
-			res.render("placeholder", { message: "There's nothing scraped yet. Please click \"Scrape For Newest Articles\" for fresh and delicious news." });
+			res.render("placeholder", { message: "There's nothing scraped yet.Click \"Scrape For Newest Articles\" for fresh and delicious news." });
 		}
 		else {
 			res.render("index", { articles: data });
@@ -98,7 +98,7 @@ app.get("/scrape", function (req, res) {
 app.get("/saved", function (req, res) {
 	Article.find({ issaved: true }, null, { sort: { created: -1 } }, function (err, data) {
 		if (data.length === 0) {
-			res.render("placeholder", { message: "You have not saved any articles yet. Try to save some delicious news by simply clicking \"Save Article\"!" });
+			res.render("placeholder", { message: "You have not saved any articles yet." });
 		}
 		else {
 			res.render("saved", { saved: data });

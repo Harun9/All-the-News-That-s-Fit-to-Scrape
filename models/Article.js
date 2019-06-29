@@ -12,7 +12,7 @@ var Articleschema = new Schema({
 	},
 	summary: {
 		type: String,
-		default: "Summary unavailable."
+		default: "Summary is unavailable."
 	},
 	img: {
 		type: String,
